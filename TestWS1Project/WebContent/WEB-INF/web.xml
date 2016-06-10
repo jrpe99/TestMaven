@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>SpilProject</display-name>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>MainPages</web-resource-name>
+			<description>These pages are only accessible by authorized
+                 administrators.</description>
+			<url-pattern>/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>These are the roles who have access.</description>
+			<role-name>ROFUS.Internal</role-name>
+			<role-name>SpillemyndighedTestGroup</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<description>This is how the user data must be transmitted.</description>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>default</realm-name>
+	</login-config>
+	<security-role>
+		<role-name>ROFUS.Internal</role-name>
+	</security-role>
+	<security-role>
+		<role-name>SpillemyndighedTestGroup</role-name>
+	</security-role>
+</web-app>

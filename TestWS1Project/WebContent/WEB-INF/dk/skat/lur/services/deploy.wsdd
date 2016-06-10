@@ -1,0 +1,218 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GamblerService WSDL service -->
+
+  <service name="GamblerServiceSOAP" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.lur.skat.dk"/>
+      <parameter name="wsdlServiceElement" value="GamblerService"/>
+      <parameter name="schemaUnqualified" value="http://services.lur.skat.dk,http://www.skat.dk/lur/GamblerCSRPValidationResponse,http://www.skat.dk/lur/GamblerCSRPValidationRequest,http://www.skat.dk/lur/GamblerCreateResponse,http://www.skat.dk/lur/GamblerCheckResponse,http://www.skat.dk/lur/GamblerCreateRequest,http://www.skat.dk/lur/GamblerCheckRequest,http://www.skat.dk/lur/GamblerCommonTypes"/>
+      <parameter name="wsdlServicePort" value="GamblerServiceSOAP"/>
+      <parameter name="className" value="dk.skat.lur.services.GamblerServiceSOAPSkeleton"/>
+      <parameter name="wsdlPortType" value="GamblerService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCreateRequest"
+        qname="ns:ExclusionEndType"
+        type="java:dk.skat.www.lur.GamblerCreateRequest.ExclusionEndType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCreateRequest"
+        qname="ns:LurTimeType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCSRPValidationResponse"
+        qname="ns:GamblerStatusType"
+        type="java:dk.skat.www.lur.GamblerCSRPValidationResponse.GamblerStatusType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCSRPValidationResponse"
+        qname="ns:CPRStatusType"
+        type="java:dk.skat.www.lur.GamblerCSRPValidationResponse.CPRStatusType"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCheckResponse"
+        qname="ns:GamblerCheckResponse"
+        type="java:dk.skat.www.lur.GamblerCheckResponse.GamblerCheckResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCreateRequest"
+        qname="ns:GamblerCreateRequest"
+        type="java:dk.skat.www.lur.GamblerCreateRequest.GamblerCreateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:TransactionTimeType"
+        type="java:java.util.Calendar"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCheckResponse"
+        qname="ns:GamblerExclusionStatusType"
+        type="java:dk.skat.www.lur.GamblerCheckResponse.GamblerExclusionStatusType"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:PersonInformationType"
+        type="java:dk.skat.www.lur.GamblerCommonTypes.PersonInformationType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCheckRequest"
+        qname="ns:GamblerCheckRequest"
+        type="java:dk.skat.www.lur.GamblerCheckRequest.GamblerCheckRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:TilladelsesindehaverType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCreateResponse"
+        qname="ns:GamblerCreateResponse"
+        type="java:dk.skat.www.lur.GamblerCreateResponse.GamblerCreateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCreateRequest"
+        qname="ns:LurDateType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:ServiceIDType"
+        type="java:dk.skat.www.lur.GamblerCommonTypes.ServiceIDType"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCheckResponse"
+        qname="ns:ExclusionStatusType"
+        type="java:dk.skat.www.lur.GamblerCheckResponse.ExclusionStatusType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCSRPValidationRequest"
+        qname="ns:GamblerCSRPValidationRequest"
+        type="java:dk.skat.www.lur.GamblerCSRPValidationRequest.GamblerCSRPValidationRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCSRPValidationResponse"
+        qname="ns:AgeStatusType"
+        type="java:dk.skat.www.lur.GamblerCSRPValidationResponse.AgeStatusType"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:HeadInformationRequestType"
+        type="java:dk.skat.www.lur.GamblerCommonTypes.HeadInformationRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCreateRequest"
+        qname="ns:ExclusionStartType"
+        type="java:dk.skat.www.lur.GamblerCreateRequest.ExclusionStartType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:PersonCPRNumberType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCSRPValidationResponse"
+        qname="ns:GamblerCSRPValidationResponse"
+        type="java:dk.skat.www.lur.GamblerCSRPValidationResponse.GamblerCSRPValidationResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:TransactionIDType"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:HeadInformationResponseType"
+        type="java:dk.skat.www.lur.GamblerCommonTypes.HeadInformationResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.skat.dk/lur/GamblerCommonTypes"
+        qname="ns:ErrorMessageType"
+        type="java:dk.skat.www.lur.GamblerCommonTypes.ErrorMessageType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
